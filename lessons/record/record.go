@@ -5,7 +5,6 @@ import "fmt"
 type User struct {
 	username string
 	age      int64
-	password string
 }
 
 type Lesson struct {
@@ -24,9 +23,14 @@ func (user User) isOldEnough() bool {
 }
 
 func (l Lesson) Run() {
+	// var company []User
+	// john := User{username: "John", age: 17}
+	// mary := User{username: "Mary", age: 21}
+	// append(company, john)
+	// append(company, mary)
 	company := []User{
-		User{username: "John", age: 17, password: "qwerty"},
-		User{username: "Mary", age: 21, password: "sdfgh"},
+		User{username: "John", age: 17},
+		User{username: "Mary", age: 21},
 	}
 	for _, user := range company {
 		fmt.Printf("%s, %d years old -> ", user.getUserName(), user.getAge())
