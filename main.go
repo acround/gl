@@ -2,26 +2,34 @@ package main
 
 import (
 	"fmt"
-	"github.com/acround/gl/roots2"
-	"github.com/acround/gl/record"
+
+	lesson "github.com/acround/gl/lessons"
+	"github.com/acround/gl/lessons/files"
+	"github.com/acround/gl/lessons/record"
+	"github.com/acround/gl/lessons/roots2"
 )
 
 func main() {
 	var iAction int64
-	actions := []string{
-		"Square roots",
-		"Ages",
-	}
+	actions, actionNames := initVars()
 	fmt.Println("Please choose an action:")
-	for index, action := range actions {
+	for index, action := range actionNames {
 		fmt.Printf("\t%d. %s", index+1, action)
 		fmt.Println()
 	}
 	fmt.Scan(&iAction)
-	switch iAction {
-	case 1:
-		roots2.run()
-	case 2:
-		record.run()
-	}
+	actions[iAction-1].Run()
+}
+
+func initVars() ([]lesson.Lesson, []string) {
+	return []lesson.Lesson{
+			roots2.New(),
+			record.New(),
+			files.New(),
+		},
+		[]string{
+			"Square roots",
+			"Ages",
+			"Files",
+		}
 }

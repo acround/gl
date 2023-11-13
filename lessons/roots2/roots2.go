@@ -5,16 +5,19 @@ import (
 	"math"
 )
 
-func run() {
+type Lesson struct {
+}
+
+func (l Lesson) Run() {
 	var a float64
 	var b float64
 	var c float64
 	var det float64
 	fmt.Println("Put coefficients")
-	a = getCoef("A")
-	b = getCoef("B")
-	c = getCoef("C")
-	det = determinant(a, b, c)
+	a = l.getCoef("A")
+	b = l.getCoef("B")
+	c = l.getCoef("C")
+	det = l.determinant(a, b, c)
 	if det > 0 {
 		x1 := (-b - math.Sqrt(det)) / (2 * a)
 		x2 := (-b + math.Sqrt(det)) / (2 * a)
@@ -30,13 +33,17 @@ func run() {
 	}
 }
 
-func getCoef(name string) float64 {
+func (l Lesson) getCoef(name string) float64 {
 	var tmp float64
 	fmt.Println(name + ":")
 	fmt.Scan(&tmp)
 	return tmp
 }
 
-func determinant(a float64, b float64, c float64) float64 {
+func (l Lesson) determinant(a float64, b float64, c float64) float64 {
 	return (b * b) - (4 * a * c)
+}
+
+func New() Lesson {
+	return *new(Lesson)
 }
