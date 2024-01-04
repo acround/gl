@@ -7,6 +7,7 @@ import (
 	"github.com/acround/gl/lessons/files"
 	"github.com/acround/gl/lessons/record"
 	"github.com/acround/gl/lessons/roots2"
+	"github.com/acround/gl/lessons/routine"
 )
 
 func main() {
@@ -26,10 +27,12 @@ func initVars() ([]lesson.Lesson, []string) {
 			roots2.New(),
 			record.New(),
 			files.New(),
+			routine.New(),
 		},
 		[]string{
 			"Square roots",
 			"Ages",
 			"Files",
+			"Routines",
 		}
 }
